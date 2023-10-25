@@ -21,16 +21,20 @@
       }
     </style>
     <script>
-        var word = "Hello World";
-        if(word === "Hello World"){
-        <!-- window.alert(word); -->
-        }
+      // DOMContentLoaded
+      document.addEventListener("DOMContentLoaded", function () {
+        var house = {};
 
-        var empty = {};
-        var home = {address: "2299 W Smithville Western", price: 399000};
-        var json = JSON.stringify(home);
-        console.log(json);
-        console.log(JSON.parse(json));
+        document
+          .getElementById("new-home")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            var add = document.getElementById("address").value;
+            var pri = document.getElementById("price").value;
+            house = { address: add, price: pri };
+            console.log(house);
+          });
+      });
     </script>
   </head>
   <body>
@@ -39,7 +43,7 @@
       <div class="row">
         <div class="col-lg-6">
           <h2>Add Home</h2>
-          <form action="#">
+          <form id="new-home" action="#">
             <div class="form-group">
               <label>Address</label>
               <input class="form-control" id="address" type="text" />
