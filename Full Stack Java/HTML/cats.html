@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div><button id="get-fact">Get Fact</button></div>
+    <div id="fact-box"></div>
+  </body>
+  <script>
+    document.getElementById("get-fact").addEventListener("click", function () {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://cat-fact.herokuapp.com/facts");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          var data = JSON.parse(xhr.responseText);
+          var randomIndex = Math.floor(Math.random() * data.length);
+          var fact = data[randomIndex].text;
+          document.getElementById("fact-box").innerHTML = fact;
+        }
+      };
+      xhr.send();
+    });
+  </script>
+</html>
